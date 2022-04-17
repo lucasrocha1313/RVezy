@@ -1,0 +1,20 @@
+version: '3'
+services:
+  db:
+    container_name: db-rvezy
+    build:
+      context: ./
+      dockerfile: db.Dockerfile
+    ports:
+      - 3306:3306 
+    restart: always
+    volumes:
+      - dbvol:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: db_rvezy
+      MYSQL_USER: rvezy
+      MYSQL_PASSWORD: rvezy@cool
+
+volumes:
+  dbvol:
