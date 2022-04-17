@@ -5,6 +5,8 @@ VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rvezy-csv-listings", "Rvezy-csv-listings\Rvezy-csv-listings.csproj", "{7017B3E8-A941-4D8E-9C49-758215A28016}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCsvListings", "TestCsvListings\TestCsvListings.csproj", "{45638F67-B668-434C-BAE9-D536B13CDBFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7017B3E8-A941-4D8E-9C49-758215A28016}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7017B3E8-A941-4D8E-9C49-758215A28016}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7017B3E8-A941-4D8E-9C49-758215A28016}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45638F67-B668-434C-BAE9-D536B13CDBFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45638F67-B668-434C-BAE9-D536B13CDBFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45638F67-B668-434C-BAE9-D536B13CDBFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45638F67-B668-434C-BAE9-D536B13CDBFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
