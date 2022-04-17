@@ -6,5 +6,6 @@ namespace Rvezy_csv_listings.Data.Repositories.Interfaces
     {
         Task Add(Listing listing);
         Task AddAll(ICollection<Listing> listings);
+        Listing FindById(int id);
     }
 }

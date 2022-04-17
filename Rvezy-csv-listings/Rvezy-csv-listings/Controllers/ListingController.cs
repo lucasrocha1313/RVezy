@@ -41,5 +41,22 @@ namespace Rvezy_csv_listings.Controllers
             }
             return BadRequest();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> FindListingById(int? id)
+        {
+            if (id == null)
+            {
+                return BadRequest();
+            }
+
+            var listing = _listingRepository.FindById(id.Value);
+            if(listing == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(listing);
+        }
     }
 }

@@ -20,5 +20,7 @@ namespace Rvezy_csv_listings.Data.Repositories
             await _context.AddRangeAsync(listings);
             await _context.SaveChangesAsync();
         }
+
+        public Listing FindById(int id) => _context.Listing.Where(a => a.Id == id).FirstOrDefault();
     }
 }
