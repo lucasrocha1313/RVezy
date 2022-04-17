@@ -1,4 +1,5 @@
 ﻿using Rvezy_csv_listings.Data.Repositories.Interfaces;
+using Rvezy_csv_listings.Filters;
 using Rvezy_csv_listings.Models;
 
 namespace Rvezy_csv_listings.Data.Repositories
@@ -22,5 +23,11 @@ namespace Rvezy_csv_listings.Data.Repositories
         }
 
         public Listing FindById(int id) => _context.Listing.Where(a => a.Id == id).FirstOrDefault();
+
+        public ICollection<Listing> GetAllPaginated(PaginationFilter validFilter)
+        {
+            return _context.Listing.Skip((validFilter.PageNumber - 1) * validFilter.PageSize)
+               .Take(validFilter.PageSize).ToList();
+        }
     }
 }

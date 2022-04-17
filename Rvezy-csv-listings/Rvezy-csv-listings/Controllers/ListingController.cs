@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Rvezy_csv_listings.Controllers.Dtos;
 using Rvezy_csv_listings.Data.Repositories.Interfaces;
+using Rvezy_csv_listings.Filters;
 using Rvezy_csv_listings.Models;
 using Rvezy_csv_listings.Services.Interfaces;
 
@@ -57,6 +58,14 @@ namespace Rvezy_csv_listings.Controllers
             }
 
             return Ok(listing);
+        }
+
+        [HttpGet("pagination")]
+        public IActionResult GetAllPagintated([FromQuery] PaginationFilter filter)
+        {
+            var validFilter = new PaginationFilter(filter.PageNumber, filter.PageSize);
+            var listPaginated = _listingRepository.GetAllPaginated(validFilter);
+            return Ok(listPaginated);
         }
     }
 }
