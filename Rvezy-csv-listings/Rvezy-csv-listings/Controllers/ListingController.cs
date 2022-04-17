@@ -26,5 +26,49 @@ namespace Rvezy_csv_listings.Controllers
             await _listingRepository.Add(listing);
             return Ok();
         }
+
+        [HttpPost("csv")]
+        public IActionResult UploadCsv(IFormFile postedFile)
+        {
+            if(postedFile != null)
+            {
+                List<Listing> listings = new List<Listing>();
+
+                string path = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                string fileName = Path.GetFileName(postedFile.FileName);
+                string filePath = Path.Combine(path, fileName);
+                using (FileStream stream = new FileStream(filePath, FileMode.Create))
+                {
+                    postedFile.CopyTo(stream);
+                }
+
+                string csvData = System.IO.File.ReadAllText(filePath);
+                var firstRow = true;
+                foreach(var row in csvData.Split('\n'))
+                {
+                    if (!string.IsNullOrEmpty(row) && !firstRow)
+                    {
+                        listings.Add(new Listing
+                        {
+                            Id = Convert.ToInt32(row.Split(',')[0]),
+                            ListingUrl = row.Split(',')[1],
+                            Name = row.Split(',')[2],
+                            Description = row.Split(',')[3],
+                            PropertyType = row.Split(',')[4]
+                        });
+                    }
+
+                    firstRow = false;
+                }
+
+                return Ok();
+            }
+            return BadRequest();
+        }
     }
 }
