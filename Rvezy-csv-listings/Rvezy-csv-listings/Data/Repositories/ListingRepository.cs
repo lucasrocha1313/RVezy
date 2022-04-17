@@ -14,5 +14,11 @@ namespace Rvezy_csv_listings.Data.Repositories
             await _context.AddAsync(listing);
             await _context.SaveChangesAsync();
         }
+
+        public async Task AddAll(ICollection<Listing> listings)
+        {
+            await _context.AddRangeAsync(listings);
+            await _context.SaveChangesAsync();
+        }
     }
 }

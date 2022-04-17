@@ -3,6 +3,8 @@ using Rvezy_csv_listings.Data;
 using Rvezy_csv_listings.Data.Repositories;
 using Rvezy_csv_listings.Data.Repositories.Interfaces;
 using Rvezy_csv_listings.Extensions;
+using Rvezy_csv_listings.Services;
+using Rvezy_csv_listings.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +21,7 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 builder.Services.AddScoped<IListingRepository, ListingRepository>();
+builder.Services.AddScoped<IListingService, ListingService>();
 
 var app = builder.Build();
 
