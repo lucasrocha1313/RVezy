@@ -13,7 +13,7 @@ namespace Rvezy_csv_listings.Models
         [Column("name")]
         public string Name { get; set; }
         [Column("description")]
-        public string description { get; set; }
+        public string Description { get; set; }
         [Column("property_type")]
         public string PropertyType { get; set; }
 
