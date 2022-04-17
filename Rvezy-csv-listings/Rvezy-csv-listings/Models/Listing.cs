@@ -16,5 +16,8 @@ namespace Rvezy_csv_listings.Models
         public string description { get; set; }
         [Column("property_type")]
         public string PropertyType { get; set; }
+
+        public ICollection<Calendar> Calendars { get; set; }
+        public ICollection<Review> Reviews { get; set; }
     }
 }

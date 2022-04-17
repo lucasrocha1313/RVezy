@@ -7,7 +7,7 @@ namespace Rvezy_csv_listings.Models
     {
         [Column("id")]
         public long Id { get; set; }
-        [Column("date")]
+        [Column("date_review")]
         public DateTime Date { get; set; }
         [Column("reviewer_id")]
         public long ReviewerId { get; set; }

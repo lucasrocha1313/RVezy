@@ -1,5 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Rvezy_csv_listings.Data;
+using Rvezy_csv_listings.Data.Repositories;
+using Rvezy_csv_listings.Data.Repositories.Interfaces;
+using Rvezy_csv_listings.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,10 +12,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapperCopnfiguration();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<DataContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+builder.Services.AddScoped<IListingRepository, ListingRepository>();
 
 var app = builder.Build();
 
